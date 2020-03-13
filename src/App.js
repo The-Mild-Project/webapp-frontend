@@ -1,18 +1,13 @@
+// in src/App.js
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Admin, Resource, ListGuesser } from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+import { UserList } from './users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is the app
-        </p>
-      </header>
-    </div>
-  );
-}
-
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const App = () => (
+     <Admin dataProvider={dataProvider}>
+        <Resource name="users" list={UserList} />
+     </Admin>
+);
 export default App;
