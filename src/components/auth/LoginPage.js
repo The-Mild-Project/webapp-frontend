@@ -9,12 +9,13 @@ const axios = require('axios');
 const responseGoogle = (response) => {
     console.log(response);
     // console.log(response.tokenId)
-    axios.get('http://localhost:8080/test/user/create', {
+    axios.get('http://localhost:8080/myapp/myresource', {
         headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials': 'true',
-            'Access-Control-Allow-Headers': 'origin, content-type, accept, authorization',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+            // 'Access-Control-Allow-Origin': 'http://localhost:8080',
+            // 'Access-Control-Allow-Credentials': 'true',
+            // 'Access-Control-Allow-Headers': 'origin, content-type, accept, authorization',
+            // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+            'Content-Type': 'application/json',
             'googleId': response.tokenId,
         }
     }).then(function (response) {
