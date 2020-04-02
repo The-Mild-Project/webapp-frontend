@@ -6,9 +6,12 @@ import authProvider from './authProvider';
 import { UserList } from './users';
 import yelpProvider from "./yelpProvider";
 
+import MyLoginPage from './components/auth/LoginPage'
+import MyLogoutButton from './components/auth/LogoutButton'
+
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const App = () => (
-     <Admin dataProvider={yelpProvider} authProvider={authProvider}>
+   <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={yelpProvider} authProvider={authProvider}>
         <Resource name="users" list={UserList} />
         <Resource name="restaurants" list={ListGuesser} />
      </Admin>
