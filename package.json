@@ -17,9 +17,9 @@
     "react-scripts": "3.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "PORT=3000 react-scripts start",
+    "build": "PORT=3000 react-scripts build",
+    "test": "PORT=3000 react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

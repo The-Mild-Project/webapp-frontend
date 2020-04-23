@@ -1,19 +1,32 @@
 // in src/App.js
 import React from 'react';
-import { Admin, Resource, ListGuesser } from 'react-admin';
+import { fetchUtils, Admin, Resource, ListGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import authProvider from './authProvider';
 import { UserList } from './users';
-import yelpProvider from "./yelpProvider";
+// import yelpProvider from "./yelpProvider";
+import getAllUsers from './users';
 
 import MyLoginPage from './components/auth/LoginPage'
 import MyLogoutButton from './components/auth/LogoutButton'
 
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const httpClient = (url, options = {}) => {
+   console.log("checking")
+   if (!options.headers) {
+      options.headers = new Headers({ Accept: 'application/json' });
+   }
+
+   options.headers.set('googleId', 'test-123456');
+   return fetchUtils.fetchJson(url, options);
+};
+
+// const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+const dataProvider = jsonServerProvider('http://localhost:8080/test/user/all', httpClient);
 const App = () => (
-   <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={yelpProvider} authProvider={authProvider}>
+   // <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={yelpProvider} authProvider={authProvider}>
+   <Admin dataProvider={dataProvider} authProvider={authProvider}>
         <Resource name="users" list={UserList} />
         <Resource name="restaurants" list={ListGuesser} />
-     </Admin>
+   </Admin>
 );
 export default App;
