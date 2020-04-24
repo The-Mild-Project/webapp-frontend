@@ -11,7 +11,6 @@ import MyLoginPage from './components/auth/LoginPage'
 import MyLogoutButton from './components/auth/LogoutButton'
 
 const httpClient = (url, options = {}) => {
-   console.log("checking")
    if (!options.headers) {
       options.headers = new Headers({ Accept: 'application/json' });
    }
@@ -23,8 +22,8 @@ const httpClient = (url, options = {}) => {
 // const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const dataProvider = jsonServerProvider('http://localhost:8080/test/user/all', httpClient);
 const App = () => (
-   // <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={yelpProvider} authProvider={authProvider}>
-   <Admin dataProvider={dataProvider} authProvider={authProvider}>
+   <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={dataProvider} authProvider={authProvider}>
+   {/* <Admin dataProvider={dataProvider} authProvider={authProvider}> */}
         <Resource name="users" list={UserList} />
         <Resource name="restaurants" list={ListGuesser} />
    </Admin>
