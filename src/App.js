@@ -5,7 +5,6 @@ import jsonServerProvider from 'ra-data-json-server';
 import authProvider from './authProvider';
 import { UserList } from './users';
 // import yelpProvider from "./yelpProvider";
-import getAllUsers from './users';
 
 import MyLoginPage from './components/auth/LoginPage'
 import MyLogoutButton from './components/auth/LogoutButton'
@@ -20,11 +19,11 @@ const httpClient = (url, options = {}) => {
 };
 
 // const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
-const dataProvider = jsonServerProvider('http://localhost:8080/test/user/all', httpClient);
+const dataProvider = jsonServerProvider('http://localhost:8080/test', httpClient);
 const App = () => (
    <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={dataProvider} authProvider={authProvider}>
    {/* <Admin dataProvider={dataProvider} authProvider={authProvider}> */}
-        <Resource name="users" list={UserList} />
+      <Resource name="user/all" list={UserList} options={{ label: 'Users' }} />
         <Resource name="restaurants" list={ListGuesser} />
    </Admin>
 );
