@@ -3,13 +3,11 @@ import { List, Datagrid, TextField, EmailField } from 'react-admin';
 
 export const UserList = props => (
     <List {...props}>
-        <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <TextField source="name" />
-            <TextField source="username" />
-            <EmailField source="email" />
-            <TextField source="address.street" />
-            <TextField source="phone" />
+        <Datagrid key={props._id} rowClick="edit">
+            <EmailField source="id" />
+            <TextField source="firstName" />
+            <TextField source="lastName" />
+            <TextField source="admin" />
         </Datagrid>
     </List>
 );
