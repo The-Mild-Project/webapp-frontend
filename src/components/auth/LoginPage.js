@@ -36,6 +36,7 @@ const MyLoginPage = ({ theme }) => {
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
+                isSignedIn={true}
             />
         </form>
     );
