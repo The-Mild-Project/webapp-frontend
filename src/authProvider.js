@@ -1,7 +1,6 @@
 export default {
     // called when the user attempts to log in
     login: ({ googleId }) => {
-        // console.log('login')
         localStorage.setItem('googleId', googleId);
         // accept all username/password combinations
         return Promise.resolve();
