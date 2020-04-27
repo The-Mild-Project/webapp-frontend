@@ -24,7 +24,7 @@ const App = () => (
    <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={dataProvider} authProvider={authProvider}>
    {/* <Admin dataProvider={dataProvider} authProvider={authProvider}> */}
       <Resource name="user/all" list={UserList} options={{ label: 'Users' }} />
-        <Resource name="restaurants" list={ListGuesser} />
+      <Resource name="restaurant/all" list={ListGuesser} options={{ label: 'Restaurants' }} />
    </Admin>
 );
 export default App;
