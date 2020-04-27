@@ -6,13 +6,11 @@ import { GoogleLogin } from 'react-google-login';
 const axios = require('axios');
 
 const MyLoginPage = ({ theme }) => {
-    const googleId = localStorage.getItem('googleId')
     const login = useLogin();
     const notify = useNotify();
 
     const responseGoogle = (response) => {
-        localStorage.setItem('googleId', response.tokenId)
-
+        localStorage.googleId = response.tokenId
         axios.get('http://localhost:8080/test/user/login', {
             headers: {
                 'Content-Type': 'application/json',
@@ -20,6 +18,7 @@ const MyLoginPage = ({ theme }) => {
             }
         }).then(function (response) {
             // log user in
+            let googleId = localStorage.getItem('googleId')
             login({ googleId })
                 .catch(() => notify("Cannot login"))
         }).catch(function (error) {
@@ -36,7 +35,6 @@ const MyLoginPage = ({ theme }) => {
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
-                isSignedIn={true}
             />
         </form>
     );

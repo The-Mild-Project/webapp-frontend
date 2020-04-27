@@ -14,7 +14,7 @@ const httpClient = (url, options = {}) => {
       options.headers = new Headers({ Accept: 'application/json' });
    }
 
-   options.headers.set('googleId', 'test-123456');
+   options.headers.set('googleId', localStorage.getItem('googleId'));
    return fetchUtils.fetchJson(url, options);
 };
 
