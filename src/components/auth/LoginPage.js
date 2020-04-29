@@ -4,6 +4,7 @@ import { useLogin, useNotify } from 'react-admin';
 import { GoogleLogin } from 'react-google-login';
 
 const axios = require('axios');
+// const googleClientId = process.env.GOOGLE_CLIENT_ID;
 
 const MyLoginPage = ({ theme }) => {
     const login = useLogin();
@@ -11,7 +12,7 @@ const MyLoginPage = ({ theme }) => {
 
     const responseGoogle = (response) => {
         localStorage.googleId = response.tokenId
-        axios.get('http://localhost:8080/test/user/login', {
+        axios.get(process.env.REACT_APP_DATA_PROVIDER + '/user/login', {
             headers: {
                 'Content-Type': 'application/json',
                 'googleId': response.tokenId,
@@ -30,7 +31,7 @@ const MyLoginPage = ({ theme }) => {
     return (
         <form>
             <GoogleLogin
-                clientId="463887251962-ftb58nofeg9tospgapjjsp0v3en1vmmq.apps.googleusercontent.com"
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Login"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
