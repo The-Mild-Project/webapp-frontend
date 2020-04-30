@@ -4,7 +4,6 @@ import { fetchUtils, Admin, Resource, ListGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import authProvider from './authProvider';
 import { UserList } from './users';
-// import yelpProvider from "./yelpProvider";
 
 import MyLoginPage from './components/auth/LoginPage'
 import MyLogoutButton from './components/auth/LogoutButton'
@@ -18,7 +17,7 @@ const httpClient = (url, options = {}) => {
    return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider('http://localhost:8080/test', httpClient);
+const dataProvider = jsonServerProvider(process.env.REACT_APP_DATA_PROVIDER, httpClient);
 const App = () => (
    <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={dataProvider} authProvider={authProvider}>
       <Resource name="user/all" list={UserList} options={{ label: 'Users' }} />

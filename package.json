@@ -2,7 +2,6 @@
   "name": "admin-interface",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -17,9 +16,9 @@
     "react-scripts": "3.3.1"
   },
   "scripts": {
-    "start": "PORT=3000 react-scripts start",
-    "build": "PORT=3000 react-scripts build",
-    "test": "PORT=3000 react-scripts test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
