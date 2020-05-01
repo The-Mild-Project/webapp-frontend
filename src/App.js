@@ -7,6 +7,7 @@ import { UserList } from './users';
 
 import MyLoginPage from './components/auth/LoginPage'
 import MyLogoutButton from './components/auth/LogoutButton'
+import { PreferencesList } from './preferences';
 
 const httpClient = (url, options = {}) => {
    if (!options.headers) {
@@ -22,6 +23,7 @@ const App = () => (
    <Admin loginPage={MyLoginPage} logoutButton={MyLogoutButton} dataProvider={dataProvider} authProvider={authProvider}>
       <Resource name="user/all" list={UserList} options={{ label: 'Users' }} />
       <Resource name="restaurant/all" list={ListGuesser} options={{ label: 'Restaurants' }} />
+      <Resource name='preferences/get/all' list={PreferencesList} options={{label: 'Preferences'}} />
    </Admin>
 );
 export default App;
