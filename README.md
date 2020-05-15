@@ -1,70 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Food App Admin Panel Web App
 
-## Available Scripts
+This app is an admin panel for the Mild Project applicaiton. It is written in Javascript and built with the [React JS Framework](https://reactjs.org). React uses NodeJS and NPM to build the applicaiton.
 
-In the project directory, you can run:
+This app connects to the backend Java microservice hosted on Heroku.
 
-### `yarn start`
+## Building the Application Locally
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app can be built locally with NPM. Simply use the command `npm start` in the root directory to start the application on the default system port. Optionally, port can be specified with `npm PORT=XXXX start`. NPM features hot reloading, so when changes are made to the app's codebase, React will shutdown and rerun the app behind the scenes for the user.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Additionally, the applicaiton can be run in a Docker container by using the following commands:
 
-### `yarn test`
+1. `docker build -t webapp-frontend`
+2. `docker run -p {local-port}:{docker-port} -it webapp-frontend:latest`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Required Env Variables
 
-### `yarn build`
+There are a few required env variables to be able to run the application locally. They can be added as system environment vars, or added to an `.env` file in the root directory.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `PORT` - port to run on
+- `REACT_APP_DATA_PROVIDER` - URL for the backend application
+- `REACT_APP_GOOGLE_CLIENT_ID` - Google client ID required to log users in with OAuth2.0
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## CI/CD
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CI/CD Process Implemented by Github Actions.
+Action implemented can be found in `.github/workflows/nodejs.yml`.
 
-### `yarn eject`
+- Application is tested on the most recent Ubuntu release with NodeJS 13.x.
+- Once CI passes, and new code is merged into the master branch, Heroku will pull new code, build a new Docker container, and deploy the applicaiton to the live server.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Deployment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+We chose Heroku for our live deployment of the application. We chose this because in addition to a large offering of different services, Heroku has great support for CI/CD workflows.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-Test change
+- The application is currently deployed on live servers hosted via [Heroku](https://www.heroku.com).
+- The live application can be accessed [here](https://mild-project.herokuapp.com).
